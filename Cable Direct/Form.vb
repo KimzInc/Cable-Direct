@@ -75,4 +75,13 @@
 
 
     End Sub
+
+    Private Sub ClearText_Box(sender As Object, e As EventArgs) _
+        Handles lstPremium.SelectedIndexChanged, lstConnection.SelectedIndexChanged,
+        radResidential.CheckedChanged, radBusiness.CheckedChanged
+
+        lblTtlDue.Text = String.Empty
+    End Sub
+
+
 End Class
