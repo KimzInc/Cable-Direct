@@ -25,7 +25,7 @@
         Double.TryParse(lstConnection.SelectedItem.ToString, dblConn)
         Double.TryParse(lstPremium.SelectedItem.ToString, dblPre_channel)
 
-        dblPre_channel = 50
+        'dblPre_channel = 50
 
         If dblConn <= 10 And dblConn <> 0 Then
             dblBasic_service = 80
@@ -34,7 +34,7 @@
         End If
 
 
-        dblTotalDue = dblPro_fee + dblBasic_service + dblPre_channel
+        dblTotalDue = dblPro_fee + dblBasic_service + dblPre_channel * 50
 
 
         Return dblTotalDue 'return totalDue for business customer
@@ -81,6 +81,18 @@
         radResidential.CheckedChanged, radBusiness.CheckedChanged
 
         lblTtlDue.Text = String.Empty
+    End Sub
+
+    Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) _
+        Handles Me.FormClosing
+        'Verify that the user wants to exit the application
+        Dim dlgButton As DialogResult
+        dlgButton = MessageBox.Show("Do you want to exit?", "Cable Direct",
+                                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        'if no button is selected, do not close the form
+        If dlgButton = DialogResult.No Then
+            e.Cancel = True
+        End If
     End Sub
 
 
