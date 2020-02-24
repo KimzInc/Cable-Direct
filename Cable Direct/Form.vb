@@ -1,4 +1,20 @@
 ﻿Public Class frmMain
+    Private Function ResidentialCustomer() As Double
+        Dim dblPro_fee As Double = 4.5
+        Dim dblBasic_service As Double = 30
+        Dim dblPre_channel As Double
+        Dim dblTotalDue As Double
+
+
+        Double.TryParse(lstPremium.SelectedItem.ToString, dblPre_channel)
+
+        dblTotalDue = dblPro_fee + dblBasic_service + dblPre_channel * 5
+        Return dblTotalDue
+    End Function
+
+
+
+    'function to calculate the total amount due for business customer
     Private Function BusinessCustomer() As Double
         Dim dblPro_fee As Double = 16.5
         Dim dblBasic_service As Double
@@ -21,7 +37,7 @@
         dblTotalDue = dblPro_fee + dblBasic_service + dblPre_channel
 
 
-        Return dblTotalDue
+        Return dblTotalDue 'return totalDue for business customer
     End Function
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
@@ -44,8 +60,19 @@
     End Sub
 
     Private Sub btnCalc_Click(sender As Object, e As EventArgs) Handles btnCalc.Click
+        'Variables
         Dim dblBusinessCustTtlDue As Double
-        dblBusinessCustTtlDue = BusinessCustomer()
-        lblTtlDue.Text = dblBusinessCustTtlDue.ToString("C2")
+        Dim dblResidentialCustTtlDue As Double
+
+
+        If radBusiness.Checked Then
+            dblBusinessCustTtlDue = BusinessCustomer()
+            lblTtlDue.Text = dblBusinessCustTtlDue.ToString("C2")
+        ElseIf radResidential.Checked Then
+            dblResidentialCustTtlDue = ResidentialCustomer()
+            lblTtlDue.Text = dblResidentialCustTtlDue.ToString("C2")
+        End If
+
+
     End Sub
 End Class

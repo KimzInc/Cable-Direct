@@ -67,6 +67,7 @@ Partial Class frmMain
         'radResidential
         '
         Me.radResidential.AutoSize = True
+        Me.radResidential.Checked = True
         Me.radResidential.Location = New System.Drawing.Point(55, 96)
         Me.radResidential.Name = "radResidential"
         Me.radResidential.Size = New System.Drawing.Size(82, 19)
